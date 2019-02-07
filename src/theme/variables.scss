@@ -75,3 +75,19 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+.error-alert.error-alert {
+  border-color: rgba(0,0,0,0.05) !important;
+}
+.error-alert {
+  background-color: #ffce00 !important;
+  border-radius: 5px;
+  border-width: 4px 0 0 0;
+  border-style: solid;
+  color: #fff;
+  display: flex;
+  font-size: 14px;
+  margin: 4px auto;
+  padding: 16px;
+  position: relative;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}

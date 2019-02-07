@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class ProviderDetailPage implements OnInit {
 
-
-  providers: Provider;
+  providersData: Provider[] = []; // All providers
+  providers: Provider[] = []; // Search result
+  error: string;
 
   constructor(
     public navCtrl: NavController,
@@ -28,6 +29,7 @@ export class ProviderDetailPage implements OnInit {
   find(): void {
     this.providerService.get().subscribe((res: any) => {
       this.providers = res;
+      this.providersData = res;
     });
   }
 
@@ -72,6 +74,22 @@ export class ProviderDetailPage implements OnInit {
     let route = this.router.url;
     route = `${route}/edit/${id}`;
     this.router.navigateByUrl(route);
+  }
+
+  search(ev: any): void {
+    const val = ev.target.value;
+    this.error = '';
+    this.providers = this.providersData;
+
+    if (val && val.trim() !== '') {
+      this.providers = [];
+      this.providers = this.providersData.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+      if (this.providers.length === 0) {
+        this.error = `No se encontro resultados para "${val}"`;
+      }
+    }
   }
 
 }

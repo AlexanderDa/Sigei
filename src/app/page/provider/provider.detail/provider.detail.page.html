@@ -10,12 +10,15 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <div class="error-alert" *ngIf="error">
+    {{error}}
+  </div>
   <ion-list>
     <ion-item *ngFor="let item of providers">
       <ion-label>{{item.name}}</ion-label>
       <ion-button slot="end" (click)="edit(item.id)">
-          
+
         <ion-icon name="create"></ion-icon>
       </ion-button>
 
@@ -25,7 +28,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="primary" routerLink="/admin/provider/new" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
