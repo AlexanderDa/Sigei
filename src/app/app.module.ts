@@ -15,9 +15,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AdminComponent } from './component/admin/admin.component';
 import { ProviderComponent } from './component/provider/provider.component';
 import { CategoryComponent } from './component/category/category.component';
+import { ProductComponent } from './component/product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, AdminComponent, ProviderComponent, CategoryComponent],
+  declarations: [AppComponent, AdminComponent, ProviderComponent, CategoryComponent, ProductComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

@@ -16,6 +16,11 @@ export class AdminComponent implements OnInit {
       url: '/admin/category'
     },
     {
+      title: 'Productos',
+      url: '/admin/product'
+    }
+    ,
+    {
       title: 'Proveedores',
       url: '/admin/provider'
     }
