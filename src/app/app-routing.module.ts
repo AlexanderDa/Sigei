@@ -18,7 +18,8 @@ const routes: Routes = [
       component: ProviderComponent,
       children: [
         {path: '', loadChildren: './page/provider/list.provider/list.provider.module#ProviderPageModule'},
-        { path: 'new', loadChildren: './page/provider/new.provider/new.provider.module#ProviderPageModule' }
+        { path: 'new', loadChildren: './page/provider/new.provider/new.provider.module#NewProviderPageModule' },
+        { path: 'edit', loadChildren: './page/provider/edit.provider/edit.provider.module#EditProviderPageModule' }
       ]
     }]
   }

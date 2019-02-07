@@ -8,14 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'Proveedores',
+      url: '/admin/provider'
     }
   ];
   constructor() { }
