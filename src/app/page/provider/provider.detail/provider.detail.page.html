@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-searchbar placeholder="Buscar" (ionInput)="search($event)"></ion-searchbar>
   <div class="error-alert" *ngIf="error">
     {{error}}
   </div>

@@ -87,7 +87,7 @@ export class ProviderDetailPage implements OnInit {
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
       if (this.providers.length === 0) {
-        this.error = `No se encontro resultados para "${val}"`;
+        this.error = `No se encontró resultados para "${val}"`;
       }
     }
   }
