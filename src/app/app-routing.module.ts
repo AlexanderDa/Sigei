@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './component/admin/admin.component';
 import { ProviderComponent } from './component/provider/provider.component';
+import { CategoryComponent } from './component/category/category.component';
 
 const routes: Routes = [
   {
@@ -19,11 +20,19 @@ const routes: Routes = [
         path: 'provider',
         component: ProviderComponent,
         children: [
-          { path: '', loadChildren: './page/provider/list.provider/list.provider.module#ProviderPageModule' },
-          { path: 'new', loadChildren: './page/provider/new.provider/new.provider.module#NewProviderPageModule' },
-          { path: 'edit/:id', loadChildren: './page/provider/edit.provider/edit.provider.module#EditProviderPageModule' }
+          { path: '', loadChildren: './page/provider/provider.detail/provider.detail.module#ProviderDetailPageModule' },
+          { path: 'new', loadChildren: './page/provider/provider.new/provider.new.module#ProviderNewPageModule' },
+          { path: 'edit/:id', loadChildren: './page/provider/provider.edit/provider.edit.module#ProviderEditPageModule' }
         ]
-      }]
+      }, {
+        path: 'category',
+        component: CategoryComponent,
+        children: [
+          { path: '', loadChildren: './page/category/category.detail/category.detail.module#CategoryDetailPageModule' },
+          { path: 'new', loadChildren: './page/category/category.new/category.new.module#CategoryNewPageModule' },
+          { path: 'edit/:id', loadChildren: './page/category/category.edit/category.edit.module#CategoryEditPageModule' }     ]
+      }
+    ]
   }
 ];
 

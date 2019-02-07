@@ -4,18 +4,18 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Proveedores
+      Categorías
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  
   <ion-list>
     <ion-item *ngFor="let item of providers">
       <ion-label>{{item.name}}</ion-label>
       <ion-button slot="end" (click)="edit(item.id)">
-
+          
         <ion-icon name="create"></ion-icon>
       </ion-button>
 
@@ -25,8 +25,8 @@
     </ion-item>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/admin/provider/new" routerDirection="forward">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button color="primary" routerLink="/admin/category/new" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

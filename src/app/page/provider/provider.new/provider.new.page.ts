@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, ToastController, NavParams } from '@ionic/angular';
+import { NavController, LoadingController, ToastController } from '@ionic/angular';
 import { Provider, ProviderService } from 'src/app/service/provider.service';
 
 @Component({
   selector: 'app-new.provider',
-  templateUrl: './new.provider.page.html',
-  styleUrls: ['./new.provider.page.scss'],
+  templateUrl: './provider.new.page.html',
+  styleUrls: ['./provider.new.page.scss'],
 })
-export class NewProviderPage implements OnInit {
+export class ProviderNewPage implements OnInit {
 
   provider: Provider;
 

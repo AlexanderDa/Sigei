@@ -6,10 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit.provider',
-  templateUrl: './edit.provider.page.html',
-  styleUrls: ['./edit.provider.page.scss'],
+  templateUrl: './provider.edit.page.html',
+  styleUrls: ['./provider.edit.page.scss'],
 })
-export class EditProviderPage implements OnInit {
+export class ProviderEditPage implements OnInit {
 
   provider: Provider;
 

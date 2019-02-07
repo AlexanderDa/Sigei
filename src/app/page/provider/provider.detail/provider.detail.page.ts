@@ -1,15 +1,16 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, ToastController, AlertController } from '@ionic/angular';
 import { ProviderService, Provider } from 'src/app/service/provider.service';
-import { Router, Route } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-list.provider',
-  templateUrl: './list.provider.page.html',
-  styleUrls: ['./list.provider.page.scss'],
+  selector: 'app-provider.detail',
+  templateUrl: './provider.detail.page.html',
+  styleUrls: ['./provider.detail.page.scss'],
 })
-export class ProviderPage implements OnInit {
+export class ProviderDetailPage implements OnInit {
 
-  providers: Provider[] = [];
+
+  providers: Provider;
 
   constructor(
     public navCtrl: NavController,
@@ -68,9 +69,9 @@ export class ProviderPage implements OnInit {
 
 
   edit(id: string) {
-    let route = this.router.url; // .substring(0, this.router.url.length - 4);
+    let route = this.router.url;
     route = `${route}/edit/${id}`;
-    console.log(route);
     this.router.navigateByUrl(route);
   }
+
 }
