@@ -1,9 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>product.new</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nuevo producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="product.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Categoría</ion-label>
+      <ion-select [(ngModel)]="product.category">
+        <ion-select-option *ngFor="let item of categories" [value]="item">{{item.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Stock</ion-label>
+      <ion-input [(ngModel)]="product.stock" type="number" step="1" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio de compra</ion-label>
+      <ion-input [(ngModel)]="product.purchasePrice" type="number" step="0.01" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio de venta</ion-label>
+      <ion-input [(ngModel)]="product.salePrice" type="number" step="0.01" min="0"></ion-input>
+    </ion-item>
+  </ion-list>
+{{ product | json }}
+  <ion-button expand="block" (click)="save()">Guardar</ion-button>
 </ion-content>
