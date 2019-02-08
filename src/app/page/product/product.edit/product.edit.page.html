@@ -10,5 +10,32 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="product.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Categoría</ion-label>
+      <ion-select [(ngModel)]="product.category">
+        <ion-select-option [value]="product.category" selected="true">{{product.category.name}}</ion-select-option>
+        <div *ngFor="let item of categories">
+          <ion-select-option [value]="item" *ngIf="item.id !== product.category.id">{{item.name}}</ion-select-option>
+        </div>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Unidades en stock</ion-label>
+      <ion-input [(ngModel)]="product.stock" type="number" step="1" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio unitario de compra</ion-label>
+      <ion-input [(ngModel)]="product.purchasePrice" type="number" step="0.01" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio unitario de venta</ion-label>
+      <ion-input [(ngModel)]="product.salePrice" type="number" step="0.01" min="0"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="save()">Guardar</ion-button>
 </ion-content>
