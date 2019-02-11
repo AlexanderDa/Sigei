@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { ChartsModule } from './chart/charts';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -16,6 +17,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { ProviderComponent } from './component/provider/provider.component';
 import { CategoryComponent } from './component/category/category.component';
 import { ProductComponent } from './component/product/product.component';
+
 
 @NgModule({
   declarations: [AppComponent, AdminComponent, ProviderComponent, CategoryComponent, ProductComponent],
