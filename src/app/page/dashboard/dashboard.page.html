@@ -8,15 +8,31 @@
 </ion-header>
 
 <ion-content padding>
-  <div style="display: block">
-    <canvas baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-  </div>
-  <button (click)="randomize()">Update</button>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Productos</ion-card-title>
+    </ion-card-header>
+    <div style="display: block">
+      <canvas baseChart
+       [datasets]="barChartData" 
+       [labels]="barChartLabels" 
+       [options]="barChartOptions" 
+       [legend]="barChartLegend"
+        [chartType]="barChartType"
+        ></canvas>
+    </div>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Grafíco</ion-label>
+        <ion-select [(ngModel)]="barChartType">
+          <ion-select-option value="bar">Barras</ion-select-option>
+          <ion-select-option value="horizontalBar">Barras horozontales</ion-select-option>
+          <ion-select-option value="pie">Gráfico circular</ion-select-option>
+          <ion-select-option value="line">Lineas</ion-select-option>
+          <ion-select-option value="radar">Radar</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+ <ion-button (click)="loadProducts()">cargar</ion-button>
 </ion-content>

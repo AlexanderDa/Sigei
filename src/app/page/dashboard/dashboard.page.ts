@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,46 +12,33 @@ export class DashboardPage implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
+  public barChartLabels: string[] = [];
+  public barChartType = 'horizontalBar';
   public barChartLegend: true;
 
-  public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
+  public barChartData: any[] = [{ data: [] }];
 
-  constructor() { }
+  constructor(public productService: ProductService) { }
+
 
   ngOnInit() {
-  }
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
+    this.loadProducts();
   }
 
-  public chartHovered(e: any): void {
-    console.log(e);
+  loadProducts(): void {
+    console.log('ejecutado');
+    const chartData = [];
+    const values: number[] = [];
+    this.productService.get().subscribe((res: any) => {
+      this.barChartLabels = [];
+      for (const item of res) {
+        this.barChartLabels.push(item.name);
+        values.push(item.stock);
+      }
+      chartData.push({ data: values, label: 'Stock de productos' });
+      this.barChartData[0] = chartData[0];
+    });
   }
 
-  public randomize(): void {
-    // Only Change 3 values
-    const data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    const clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
-    /**
-     * (My guess), for Angular to recognize the change in the dataset
-     * it has to change the dataset variable directly,
-     * so one way around it, is to clone the data, change it and then
-     * assign it;
-     */
-  }
+
 }
