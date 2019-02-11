@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category, CategoryService } from 'src/app/service/category.service';
-import { NavController, LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { NavController, LoadingController, ToastController, AlertController, ActionSheetController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,7 @@ export class CategoryDetailPage implements OnInit {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public router: Router,
+    public actionSheetCtrl: ActionSheetController,
     public categoryService: CategoryService
   ) { }
 
@@ -91,6 +92,35 @@ export class CategoryDetailPage implements OnInit {
         this.error = `No se encontró resultados para "${val}"`;
       }
     }
+  }
+
+
+
+  async presentActionSheet(id: string) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        icon: 'trash',
+        handler: () => {
+          this.delete(id);
+        }
+      }, {
+        text: 'Editar',
+        icon: 'create',
+        handler: () => {
+          this.router.navigateByUrl(`${this.router.url}/edit/${id}`);
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
 }

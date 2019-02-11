@@ -17,13 +17,8 @@
   <ion-list>
     <ion-item *ngFor="let item of categories">
       <ion-label>{{item.name}}</ion-label>
-      <ion-button slot="end" (click)="edit(item.id)">
-
-        <ion-icon name="create"></ion-icon>
-      </ion-button>
-
-      <ion-button style="margin-left:2px" slot="end" color="danger" (click)="delete(item.id)">
-        <ion-icon name="trash"></ion-icon>
+      <ion-button slot="end" (click)="presentActionSheet(item.id)">
+        <ion-icon name="more" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
@@ -33,4 +28,5 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
 </ion-content>

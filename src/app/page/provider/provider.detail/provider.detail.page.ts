@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { NavController, LoadingController, ToastController, AlertController, ActionSheetController } from '@ionic/angular';
 import { ProviderService, Provider } from 'src/app/service/provider.service';
 import { Router } from '@angular/router';
 @Component({
@@ -19,6 +19,7 @@ export class ProviderDetailPage implements OnInit {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public router: Router,
+    public actionSheetCtrl: ActionSheetController,
     public providerService: ProviderService
   ) { }
 
@@ -70,11 +71,7 @@ export class ProviderDetailPage implements OnInit {
   }
 
 
-  edit(id: string) {
-    let route = this.router.url;
-    route = `${route}/edit/${id}`;
-    this.router.navigateByUrl(route);
-  }
+
 
   search(ev: any): void {
     const val = ev.target.value;
@@ -92,4 +89,31 @@ export class ProviderDetailPage implements OnInit {
     }
   }
 
+
+  async presentActionSheet(id: string) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        icon: 'trash',
+        handler: () => {
+          this.delete(id);
+        }
+      }, {
+        text: 'Editar',
+        icon: 'create',
+        handler: () => {
+          this.router.navigateByUrl(`${this.router.url}/edit/${id}`);
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
 }

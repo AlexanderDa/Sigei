@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { NavController, LoadingController, ToastController, AlertController, ActionSheetController } from '@ionic/angular';
 import { ProductService, Product } from 'src/app/service/product.service';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,7 @@ export class ProductDetailPage implements OnInit {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public router: Router,
+    public actionSheetCtrl: ActionSheetController,
     public productService: ProductService
   ) { }
 
@@ -72,12 +73,6 @@ export class ProductDetailPage implements OnInit {
   }
 
 
-  edit(id: string) {
-    let route = this.router.url;
-    route = `${route}/edit/${id}`;
-    this.router.navigateByUrl(route);
-  }
-
   search(ev: any): void {
     const val = ev.target.value;
     this.error = '';
@@ -92,5 +87,34 @@ export class ProductDetailPage implements OnInit {
         this.error = `No se encontró resultados para "${val}"`;
       }
     }
+  }
+
+
+
+  async presentActionSheet(id: string) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Opciones',
+      buttons: [{
+        text: 'Eliminar',
+        icon: 'trash',
+        handler: () => {
+          this.delete(id);
+        }
+      }, {
+        text: 'Editar',
+        icon: 'create',
+        handler: () => {
+          this.router.navigateByUrl(`${this.router.url}/edit/${id}`);
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 }
