@@ -4,6 +4,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { ProviderComponent } from './component/provider/provider.component';
 import { CategoryComponent } from './component/category/category.component';
 import { ProductComponent } from './component/product/product.component';
+import { OrderComponent } from './component/order/order.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,15 @@ const routes: Routes = [
           { path: '', loadChildren: './page/product/product.detail/product.detail.module#ProductDetailPageModule' },
           { path: 'new', loadChildren: './page/product/product.new/product.new.module#ProductNewPageModule' },
           { path: 'edit/:id', loadChildren: './page/product/product.edit/product.edit.module#ProductEditPageModule' }
+        ]
+      },
+      {
+        path: 'order',
+        component: OrderComponent,
+        children: [
+          { path: '', loadChildren: './page/order/order.detail/order.detail.module#OrderDetailPageModule' },
+          { path: 'new', loadChildren: './page/order/order.new/order.new.module#OrderNewPageModule' },
+          { path: 'edit', loadChildren: './page/order/order.edit/order.edit.module#OrderEditPageModule' }
         ]
       }
 

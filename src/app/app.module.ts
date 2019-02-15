@@ -17,10 +17,11 @@ import { AdminComponent } from './component/admin/admin.component';
 import { ProviderComponent } from './component/provider/provider.component';
 import { CategoryComponent } from './component/category/category.component';
 import { ProductComponent } from './component/product/product.component';
+import { OrderComponent } from './component/order/order.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AdminComponent, ProviderComponent, CategoryComponent, ProductComponent],
+  declarations: [AppComponent, AdminComponent, ProviderComponent, CategoryComponent, ProductComponent, OrderComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

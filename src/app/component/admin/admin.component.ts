@@ -27,6 +27,10 @@ export class AdminComponent implements OnInit {
     {
       title: 'Proveedores',
       url: '/admin/provider'
+    } ,
+    {
+      title: 'Ordenes',
+      url: '/admin/order'
     }
   ];
   constructor() { }
