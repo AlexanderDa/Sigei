@@ -8,6 +8,46 @@
     <ion-title>Nueva orden</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content padding>
 
+
+<ion-content padding>
+  
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Proveedor</ion-label>
+        <ion-select  required  [(ngModel)]="order.provider">
+          <ion-select-option *ngFor="let item of providers" [value]="item">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Producto</ion-label>
+        <ion-select  required [(ngModel)]="order.product">
+          <ion-select-option *ngFor="let item of products" [value]="item">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cantidad</ion-label>
+        <ion-input required [(ngModel)]="order.quantity" type="number" step="1" min="0"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Precio de unitario</ion-label>
+        <ion-input required [(ngModel)]="order.unitPrice" type="number" step="0.01" min="0"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Número de orden</ion-label>
+        <ion-input required [(ngModel)]="order.orderNumber" type="number" step="1" min="0"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Fecha de entrega</ion-label>
+        <ion-datetime required displayFormat="HH:mm" [(ngModel)]="order.deliveryDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Entregado</ion-label>
+        <ion-toggle required [(ngModel)]="order.delivered"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <ion-button  expand="block" (click)="save()">Guardar</ion-button>
+  {{order | json}}
 </ion-content>
