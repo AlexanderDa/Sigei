@@ -53,7 +53,7 @@ const routes: Routes = [
         children: [
           { path: '', loadChildren: './page/order/order.detail/order.detail.module#OrderDetailPageModule' },
           { path: 'new', loadChildren: './page/order/order.new/order.new.module#OrderNewPageModule' },
-          { path: 'edit', loadChildren: './page/order/order.edit/order.edit.module#OrderEditPageModule' }
+          { path: 'edit/:id', loadChildren: './page/order/order.edit/order.edit.module#OrderEditPageModule' }
         ]
       }
 

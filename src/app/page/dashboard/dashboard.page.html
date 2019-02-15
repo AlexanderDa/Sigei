@@ -13,18 +13,13 @@
       <ion-card-title>Productos</ion-card-title>
     </ion-card-header>
     <div style="display: block">
-      <canvas baseChart
-       [datasets]="barChartData" 
-       [labels]="barChartLabels" 
-       [options]="barChartOptions" 
-       [legend]="barChartLegend"
-        [chartType]="barChartType"
-        ></canvas>
+      <canvas baseChart [datasets]="stockChartData" [labels]="stockChartLabels" [options]="chartOptions" [legend]="chartLegend"
+        [chartType]="stockChartType"></canvas>
     </div>
     <ion-card-content>
       <ion-item>
         <ion-label>Grafíco</ion-label>
-        <ion-select [(ngModel)]="barChartType">
+        <ion-select [(ngModel)]="stockChartType">
           <ion-select-option value="bar">Barras</ion-select-option>
           <ion-select-option value="horizontalBar">Barras horozontales</ion-select-option>
           <ion-select-option value="pie">Gráfico circular</ion-select-option>
@@ -34,5 +29,28 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
- <ion-button (click)="loadProducts()">cargar</ion-button>
+
+<!------------------------------------------------------------------------------>
+
+<ion-card class="welcome-card">
+  <ion-card-header>
+    <ion-card-title>Ordenes</ion-card-title>
+  </ion-card-header>
+  <div style="display: block">
+    <canvas baseChart [datasets]="orderChartData" [labels]="orderChartLabels" [options]="chartOptions" [legend]="chartLegend"
+      [chartType]="orderChartType"></canvas>
+  </div>
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Grafíco</ion-label>
+      <ion-select [(ngModel)]="orderChartType">
+        <ion-select-option value="bar">Barras</ion-select-option>
+        <ion-select-option value="horizontalBar">Barras horozontales</ion-select-option>
+        <ion-select-option value="pie">Gráfico circular</ion-select-option>
+        <ion-select-option value="line">Lineas</ion-select-option>
+        <ion-select-option value="radar">Radar</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
 </ion-content>

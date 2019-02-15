@@ -10,5 +10,66 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-list>
 
+    <ion-item>
+      <ion-label position="floating">Proveedor</ion-label>
+      <ion-select [(ngModel)]="order.provider">
+        <ion-select-option [value]="order.provider" selected="true">{{order.provider.name}}</ion-select-option>
+        <div *ngFor="let item of providers">
+          <ion-select-option [value]="item" *ngIf="item.id !== order.provider.id">{{item.name}}</ion-select-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+    <!--
+              <ion-item>
+      <ion-label position="floating">Categoría</ion-label>
+      <ion-select [(ngModel)]="product.category">
+        <ion-select-option [value]="product.category" selected="true">{{product.category.name}}</ion-select-option>
+        <div *ngFor="let item of categories">
+          <ion-select-option [value]="item" *ngIf="item.id !== product.category.id">{{item.name}}</ion-select-option>
+        </div>
+      </ion-select>
+    </ion-item>
+        -->
+
+    <ion-item>
+      <ion-label position="floating">Proveedor</ion-label>
+      <ion-select [(ngModel)]="order.provider">
+        <ion-select-option [value]="order.provider" selected="true">{{order.provider.name}}</ion-select-option>
+        <div *ngFor="let item of provider">
+          <ion-select-option [value]="item" *ngIf="item.id !== order.provider.id">{{item.name}}</ion-select-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Producto</ion-label>
+      <ion-select required [(ngModel)]="order.product">
+        <ion-select-option *ngFor="let item of products" [value]="item">{{item.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input required [(ngModel)]="order.quantity" type="number" step="1" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio de unitario</ion-label>
+      <ion-input required [(ngModel)]="order.unitPrice" type="number" step="0.01" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Número de orden</ion-label>
+      <ion-input required [(ngModel)]="order.orderNumber" type="number" step="1" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha de entrega</ion-label>
+      <ion-datetime required displayFormat="YYYY-MM-DD" [(ngModel)]="order.deliveryDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Entregado</ion-label>
+      <ion-toggle required [(ngModel)]="order.delivered"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="save()">Guardar</ion-button>
 </ion-content>
