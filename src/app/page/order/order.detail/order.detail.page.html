@@ -15,8 +15,8 @@
     {{error}}
   </div>
   <ion-list>
-    <ion-item *ngFor="let item of providers">
-      <ion-label>{{item.name}}</ion-label>
+    <ion-item *ngFor="let item of orders">
+      <ion-label>{{item.product.name}} {{item.deliveryDate}}</ion-label>
       <ion-button slot="end"  (click)="presentActionSheet(item.id)">
         <ion-icon name="more" slot="icon-only"></ion-icon>
       </ion-button>
